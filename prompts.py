@@ -1,9 +1,3 @@
-"""
-Prompt templates for the Research Planning Assistant
-"""
-
-from pydantic import BaseModel, Field
-
 research_topic_eligibility_prompt = """
 You are a research topic evaluator. Your job is to evaluate whether a research topic is suitable for deep research.
 The user will provide a research topic. You must evaluate the topic and determine if it is suitable for deep research.

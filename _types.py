@@ -2,7 +2,6 @@ from pydantic import BaseModel, Field
 from typing import List, Optional
 
 class ResearchStep(BaseModel):
-    """A single step in the research plan"""
     step_number: int = Field(description="The sequential number of this step")
     title: str = Field(description="A concise title for this research step")
     description: str = Field(description="Detailed description of what needs to be done in this step")
@@ -13,7 +12,6 @@ class ResearchStep(BaseModel):
     )
 
 class ResearchPlan(BaseModel):
-    """Complete research plan with metadata and steps for AI agent execution"""
     topic: str = Field(description="The research topic provided by the user")
     refined_topic: str = Field(description="A refined/clarified version of the research topic")
     objectives: List[str] = Field(description="Main research objectives")
