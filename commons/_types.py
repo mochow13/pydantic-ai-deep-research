@@ -1,0 +1,27 @@
+from pydantic import BaseModel, Field
+from typing import List, Optional
+
+class ResearchStep(BaseModel):
+    step_number: int = Field(description="The sequential number of this step")
+    title: str = Field(description="A concise title for this research step")
+    description: str = Field(description="Detailed description of what needs to be done in this step")
+    expected_outcome: str = Field(description="What should be achieved by completing this step")
+
+class ResearchStepResult(BaseModel):
+    step_number: int = Field(description="The sequential number of the completed step")
+    title: str = Field(description="The title of the completed research step")
+    success: bool = Field(description="Whether the step was completed successfully")
+    findings: str = Field(description="The main findings and results from this research step")
+    sources: List[str] = Field(description="List of sources or references used in this step")
+    key_insights: List[str] = Field(description="Key insights discovered during this step")
+    error_message: Optional[str] = Field(
+        default=None, 
+        description="Error message if the step failed"
+    )
+
+class ResearchPlan(BaseModel):
+    topic: str = Field(description="The research topic provided by the user")
+    refined_topic: str = Field(description="A refined/clarified version of the research topic")
+    objectives: List[str] = Field(description="Main research objectives")
+    key_questions: List[str] = Field(description="Key research questions to investigate")
+    steps: List[ResearchStep] = Field(description="Sequential list of research steps")
