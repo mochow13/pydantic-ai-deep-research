@@ -1133,6 +1133,7 @@ dependencies = [
     { name = "asyncio" },
     { name = "pydantic-ai" },
     { name = "pydantic-ai-litellm" },
+    { name = "python-dotenv" },
 ]
 
 [package.metadata]
@@ -1140,6 +1141,7 @@ requires-dist = [
     { name = "asyncio", specifier = ">=4.0.0" },
     { name = "pydantic-ai", specifier = ">=1.0.1" },
     { name = "pydantic-ai-litellm", specifier = ">=0.2.1" },
+    { name = "python-dotenv", specifier = ">=1.0.0" },
 ]
 
 [[package]]

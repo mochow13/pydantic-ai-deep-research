@@ -1,16 +1,18 @@
 import json
 
 from rich.prompt import Prompt
-from commons._types import ResearchPlan
+from commons._types import ResearchPlan, ResearchStepResult
+from commons.formatter import format_analysis
 from config.console_config import console, success_style, error_style
 from deep_research.planner import ResearchPlanner
 from deep_research.analyzer import ResearchAnalyst
+from deep_research.synthesizer import ResearchSynthesizer
 
 class ResearchOrchestrator:
-    
     def __init__(self):
         self.planner = ResearchPlanner()
         self.analyst = ResearchAnalyst()
+        self.synthesizer = ResearchSynthesizer()
     
     def _get_valid_research_plan(self):
         while True:
@@ -40,6 +42,11 @@ class ResearchOrchestrator:
 
         return analysis
 
+    def _synthesize_report(self, plan: ResearchPlan, analysis: list[ResearchStepResult]):
+        formatted_analysis = format_analysis(analysis)
+        report = self.synthesizer.synthesize_report(plan.refined_topic, plan.objectives, plan.key_questions, formatted_analysis)
+        return report
+
     def run_research_session(self) -> None:
         plan = self._get_valid_research_plan()
         
@@ -47,3 +54,7 @@ class ResearchOrchestrator:
             return
         
         analysis = self._execute_analysis(plan)
+        report = self._synthesize_report(plan, analysis)
+
+        console.print("🔖 Final research report:", style=success_style)
+        console.print(report)

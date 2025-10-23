@@ -6,6 +6,7 @@ from rich.prompt import Prompt
 
 from config.console_config import console, success_style, error_style
 from commons.models import Model
+from commons.config import PLANNER_MODEL, PLANNER_MINI_MODEL
 from commons.prompts import (
     research_planner_prompt,
     research_plan_user_feedback_prompt,
@@ -14,10 +15,9 @@ from commons.prompts import (
 from commons._types import ResearchPlan
 
 class ResearchPlanner:
-    
     def __init__(self):
-        self.model = Model("litellm_proxy/cody::gpt-4o")
-        self.mini_model = Model("litellm_proxy/cody::gpt-4o-mini")
+        self.model = Model(PLANNER_MODEL)
+        self.mini_model = Model(PLANNER_MINI_MODEL)
     
     def evaluate_research_eligibility(self, topic: str) -> bool:
         agent = Agent(model=self.mini_model.getModel(), output_type=bool)

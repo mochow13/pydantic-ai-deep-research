@@ -1,5 +1,8 @@
+from dotenv import load_dotenv
 from config.console_config import console, welcome_style
 from deep_research.orchestrator import ResearchOrchestrator
+
+load_dotenv()
 
 def log_initial_message():
     console.print("🎤 Welcome to the Deep Research Assistant!", style=welcome_style)
