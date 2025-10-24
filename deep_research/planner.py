@@ -6,7 +6,7 @@ from rich.prompt import Prompt
 
 from config.console_config import console, success_style, error_style
 from commons.models import Model
-from commons.config import PLANNER_MODEL, PLANNER_MINI_MODEL
+from config.model_config import PLANNER_MODEL, PLANNER_MINI_MODEL
 from commons.prompts import (
     research_planner_prompt,
     research_plan_user_feedback_prompt,

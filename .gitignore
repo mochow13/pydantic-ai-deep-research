@@ -11,6 +11,3 @@ wheels/
 
 # Environment variables
 .env
-
-# Model configs
-config/model_config.py
