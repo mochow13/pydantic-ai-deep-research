@@ -62,7 +62,7 @@ This research assistant leverages the `pydantic-ai` AI-agent framework and `pyda
     API_KEY=your_api_key
     ```
 
-4. **Create config.py and put model names in `config.py`**
+4. **Update model_config.py and put your favourite model names**
    ```python
     ANALYZER_MODEL = "<analyzer-model>"
     PLANNER_MODEL = "<planner-model>"
